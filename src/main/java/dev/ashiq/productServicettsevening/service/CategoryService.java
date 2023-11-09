@@ -1,13 +1,15 @@
 package dev.ashiq.productServicettsevening.service;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import dev.ashiq.productServicettsevening.models.Category;
 import org.springframework.web.bind.annotation.PathVariable;
+
+import java.util.List;
 
 public interface CategoryService {
 
 
-    public String getAllCategories();
+    public List<Category> getAllCategories();
 
 
-    public String getProductsInCategory(@PathVariable("categoryId") Long categoryId);
+    public Category getProductsInCategory(@PathVariable("categoryId") Long categoryId);
 }

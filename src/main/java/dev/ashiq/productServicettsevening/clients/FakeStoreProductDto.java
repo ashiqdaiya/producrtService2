@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter
 @Setter
-
+@ToString
 public class FakeStoreProductDto {
     private Long id;
     private String title;

@@ -5,19 +5,20 @@ import dev.ashiq.productServicettsevening.models.Product;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductService {
 
 
     public List<Product> getAllProduct();
 
-    public Product getSingleProduct(@PathVariable("productId") Long productId);
+    public Optional<Product> getSingleProduct(@PathVariable("productId") Long productId);
 
     public Product addNewProduct(ProductDto productDto);
 
 
-    public Product updateProduct(@PathVariable("productId") Long productId, Product product);
+    public Product updateProduct(@PathVariable("productId") Long productId, ProductDto product);
 
-    public String deleteAProduct(@PathVariable("productId") Long productId);
+   // public Product deleteAProduct(@PathVariable("productId") Long productId);
 
 }

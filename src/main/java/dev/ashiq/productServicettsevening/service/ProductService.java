@@ -2,6 +2,7 @@ package dev.ashiq.productServicettsevening.service;
 
 import dev.ashiq.productServicettsevening.dto.ProductDto;
 import dev.ashiq.productServicettsevening.models.Product;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,8 @@ public interface ProductService {
     public List<Product> getAllProduct();
 
     public Optional<Product> getSingleProduct(@PathVariable("productId") Long productId);
+
+    public Page<Product> getProducts(int numberOfProducts,int offset);
 
     public Product addNewProduct(ProductDto productDto);
 

@@ -8,6 +8,9 @@ import dev.ashiq.productServicettsevening.repo.CategoryRepository;
 import dev.ashiq.productServicettsevening.repo.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -35,6 +38,19 @@ public class SelfProductService implements ProductService{
     public Optional<Product> getSingleProduct(Long productId) {
         Product product=productRepo.findProductById(productId);
         return Optional.ofNullable(product);
+    }
+
+    @Override
+    public Page<Product> getProducts(int numberOfProducts, int offset) {
+        Page<Product> products= productRepo.findAll(
+                PageRequest.of((offset/numberOfProducts),
+                        numberOfProducts, Sort.by("price")
+                                .descending()
+                                .and(
+                                      Sort.by("title").ascending()
+                                ))
+        );
+        return products;
     }
 
     @Override
